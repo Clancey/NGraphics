@@ -1,10 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0-maccatalyst13.5</TargetFrameworks>
+    <TargetFrameworks>net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\NGraphics.Mac\ApplePlatform.cs">
@@ -15,8 +21,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NGraphics\NGraphics.csproj">
-    </ProjectReference>
+    <ProjectReference Include="..\..\NGraphics\NGraphics.csproj" />
   </ItemGroup>
 </Project>
 
